@@ -69,7 +69,7 @@ const WheelSlice = ({ index, total, type, color }) => {
 
   return (
     <g>
-      <path d={pathData} fill={color} stroke="#5D4037" strokeWidth="0.005" />
+      <path d={pathData} fill={color} stroke="#877252" strokeWidth="0.005" />
       <text 
         x={iconX} 
         y={iconY} 

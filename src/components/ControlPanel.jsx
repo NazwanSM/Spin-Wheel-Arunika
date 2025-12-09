@@ -4,59 +4,58 @@ import { ITEM_TYPES } from '../constants/itemTypes';
 
 const ControlPanel = ({ itemsCount, isSpinning, onSpin, config }) => {
   return (
-    <div className="flex flex-col items-center w-full max-w-xs md:max-w-sm">
+    <div className="flex flex-col items-center w-full">
       
       {/* Main Card Container */}
-      <div className="w-full bg-[#FDFBE7] rounded-[2rem] p-6 shadow-xl border border-stone-100"
+      <div className="w-full bg-[#ECE9D9]/95 backdrop-blur-xl rounded-3xl p-5 md:p-6 shadow-2xl border border-white/40"
            style={{
-             boxShadow: '0 20px 40px rgba(62, 39, 35, 0.1), 0 5px 15px rgba(0,0,0,0.05)'
+             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
            }}>
         
         {/* Header Section */}
-        <div className="mb-4">
-          <h2 className="text-xl md:text-2xl font-bold text-center text-[#3E2723] mb-3">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-black text-[#3E2723] tracking-tight uppercase">
             Status Roda
           </h2>
-          {/* Horizontal Line */}
-          <div className="w-full h-px bg-[#8D6E63] opacity-50"></div>
+          <div className="h-2 w-2 rounded-full bg-[#606652] animate-pulse"></div>
         </div>
 
         {/* Status Content - Detail per Item */}
-        <div className="flex flex-col gap-2 mb-5">
+        <div className="flex flex-col gap-3 mb-6">
           {/* Total */}
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-base font-bold text-[#4E342E]">
-              Total Sisa Item:
+          <div className="flex justify-between items-center p-3 bg-[#E7E4D8] rounded-2xl border border-[#D7D3C1] shadow-inner">
+            <span className="text-xs font-bold text-[#5D4037] uppercase tracking-wider">
+              Sisa Item
             </span>
-            <span className="w-9 h-9 flex items-center justify-center rounded-full text-base font-bold text-white bg-[#3E2723]">
+            <span className="h-8 px-3 flex items-center justify-center rounded-xl text-base font-black text-white bg-[#606652] shadow-lg">
               {itemsCount}
             </span>
           </div>
 
           {/* Detail per tipe item */}
-          <div className=" rounded-xl p-3 space-y-2">
+          <div className="space-y-2">
             {Object.keys(ITEM_TYPES).map((type) => {
               const itemType = ITEM_TYPES[type];
               const count = config[type] || 0;
               const Icon = itemType.icon;
               
               return (
-                <div key={type} className="flex items-center justify-between py-1">
-                  <div className="flex items-center gap-2">
+                <div key={type} className="flex items-center justify-between p-1.5 rounded-xl hover:bg-white/40 transition-colors">
+                  <div className="flex items-center gap-2.5">
                     <div 
-                      className="w-7 h-7 rounded-full flex items-center justify-center"
+                      className="w-8 h-8 rounded-xl flex items-center justify-center shadow-sm"
                       style={{ backgroundColor: itemType.color }}
                     >
                       <Icon size={14} color="white" />
                     </div>
-                    <span className="text-sm font-medium text-[#5D4037]">
+                    <span className="text-xs font-bold text-[#5D4037]">
                       {itemType.label}
                     </span>
                   </div>
-                  <span className={`text-sm font-bold px-2.5 py-0.5 rounded-full ${
+                  <span className={`text-[10px] font-bold px-2.5 py-1 rounded-lg ${
                     count === 0 
-                      ? 'bg-red-100 text-red-600' 
-                      : 'bg-[#EFEBE9] text-[#3E2723]'
+                      ? 'bg-red-100 text-red-600 border border-red-200' 
+                      : 'bg-white text-[#3E2723] border border-[#D7D3C1]'
                   }`}>
                     {count}
                   </span>
@@ -67,9 +66,9 @@ const ControlPanel = ({ itemsCount, isSpinning, onSpin, config }) => {
 
           {/* Error Message */}
           {itemsCount === 0 && (
-            <div className="text-[#D32F2F] flex items-start gap-2 text-sm mt-2 font-medium">
-              <AlertCircle size={18} className="mt-0.5 flex-shrink-0"/> 
-              <span>Item habis. Silakan reset di pengaturan.</span>
+            <div className="bg-red-50 text-red-600 p-4 rounded-2xl flex items-center gap-3 text-sm font-bold border border-red-100 animate-pulse">
+              <AlertCircle size={20} className="shrink-0"/> 
+              <span>Stok habis! Reset di pengaturan.</span>
             </div>
           )}
         </div>
@@ -78,24 +77,24 @@ const ControlPanel = ({ itemsCount, isSpinning, onSpin, config }) => {
         <button
           onClick={onSpin}
           disabled={isSpinning || itemsCount === 0}
-          className="w-full py-4 rounded-xl text-lg md:text-xl font-bold uppercase tracking-wider transition-all duration-200 transform active:scale-[0.98] shadow-md"
+          className="w-full py-5 rounded-2xl text-xl font-black uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 shadow-xl hover:shadow-2xl relative overflow-hidden group"
           style={{
             background: isSpinning || itemsCount === 0 
-              ? '#8D6E63' // Warna abu-abu kebiruan seperti di gambar saat disabled
-              : 'linear-gradient(135deg, #5D4037 0%, #4E342E 50%, #3E2723 100%)', // Orange saat aktif
+              ? 'linear-gradient(135deg, #98A381 0%, #929C7B 50%, #8D9675 100%)'
+              : 'linear-gradient(135deg, #606652 0%, #545948 50%, #484D3E 100%)',
             color: 'white',
             cursor: isSpinning || itemsCount === 0 ? 'not-allowed' : 'pointer'
           }}
         >
-          {isSpinning ? 'Sedang Memutar...' : 'PUTAR SEKARANG'}
+          <span className="relative z-10 flex items-center justify-center gap-2">
+            {isSpinning ? 'Memutar...' : 'PUTAR SEKARANG'}
+          </span>
+          {!(isSpinning || itemsCount === 0) && (
+             <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+          )}
         </button>
 
       </div>
-      
-      {/* Optional: Footer text if you still want it outside */}
-      {/* <p className="text-xs text-[#5D4037]/60 italic text-center mt-4 px-2">
-        *Tekan tombol putar untuk mengundi.
-      </p> */}
     </div>
   );
 };

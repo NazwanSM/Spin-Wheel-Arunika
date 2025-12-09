@@ -9,10 +9,11 @@ import { ITEM_TYPES } from './constants/itemTypes';
 export default function App() {
   // State untuk jumlah item di pengaturan
   const [config, setConfig] = useState({
-    A: 10,
-    B: 2,
-    C: 3,
-    ZONK: 15,
+    A: 3,
+    B: 5,
+    C: 5,
+    D: 7,
+    ZONK: 10,
   });
 
   // State Aplikasi
@@ -142,7 +143,8 @@ export default function App() {
   // Generate awal saat load
   useEffect(() => {
     generateItems();
-  }, [generateItems]); // Run once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); 
 
   // --- Logic Spin ---
   const handleSpin = () => {
@@ -204,24 +206,43 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen font-sans text-[#3E2723] overflow-hidden flex flex-col"
-         style={{ background: 'linear-gradient(180deg, #F5F5DC 0%, #FFFDE7 50%, #FFF8E1 100%)' }}>
+    <div className="min-h-screen font-sans text-[#3E2723] overflow-x-hidden flex flex-col relative"
+         style={{ background: 'linear-gradient(180deg, #99815D 0%, #8C7654 50%, #7D664A 100%)' }}>
       
-      {/* --- Header --- */}
-      <Header onOpenConfig={() => setShowConfig(true)} />
+      {/* Background Pattern Overlay */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none" 
+           style={{ 
+             backgroundImage: 'radial-gradient(#ECE9D9 1px, transparent 1px)', 
+             backgroundSize: '30px 30px' 
+           }}>
+      </div>
 
-      <main className="flex-1 flex flex-col lg:flex-row items-center justify-center px-4 py-6 md:py-8 gap-6 md:gap-10 relative">
+      {/* --- Header --- */}
+      <div className="relative z-20">
+        <Header onOpenConfig={() => setShowConfig(true)} />
+      </div>
+
+      <main className="flex-1 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center px-4 py-6 md:py-12 gap-8 md:gap-16 relative z-10">
         
         {/* --- Area Roda (Kiri/Tengah) --- */}
-        <SpinWheel items={items} rotation={rotation} />
+        <div className="relative flex-1 flex justify-center items-center w-full max-w-[700px] lg:max-w-none">
+            {/* Glow Effect behind wheel */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#ECE9D9]/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div className="transform transition-transform duration-500 hover:scale-[1.02] relative z-10 w-full flex justify-center">
+                <SpinWheel items={items} rotation={rotation} />
+            </div>
+        </div>
 
         {/* --- Kontrol & Info (Kanan/Bawah) --- */}
-        <ControlPanel 
-          itemsCount={items.length} 
-          isSpinning={isSpinning} 
-          onSpin={handleSpin}
-          config={config}
-        />
+        <div className="w-full max-w-sm lg:w-[340px] shrink-0">
+            <ControlPanel 
+              itemsCount={items.length} 
+              isSpinning={isSpinning} 
+              onSpin={handleSpin}
+              config={config}
+            />
+        </div>
 
       </main>
 

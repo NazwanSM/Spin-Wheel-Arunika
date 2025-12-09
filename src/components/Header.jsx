@@ -1,20 +1,18 @@
 import React from 'react';
 import { Settings } from 'lucide-react';
-import loocoLogo from '/LooCo.png';
+import loocoLogo from '/ARUNIKA_LOGO.png';
 
 const Header = ({ onOpenConfig }) => {
   return (
-    <header className="px-4 md:px-6 py-2 text-[#EFEBE9] shadow-lg flex justify-between items-center z-10"
-            style={{
-              background: 'linear-gradient(135deg, #5D4037 0%, #4E342E 50%, #3E2723 100%)',
-              boxShadow: '0 4px 20px rgba(62, 39, 35, 0.4)'
-            }}>
-      <img src={loocoLogo} alt="LooCo Logo" className="h-14 md:h-18 object-contain" />
+    <header className="px-6 md:px-8 py-4 flex justify-between items-center z-10 backdrop-blur-sm bg-white/5 border-b border-white/10">
+      <div className=" p-2 rounded-xl">
+        <img src={loocoLogo} alt="LooCo Logo" className="h-12 md:h-16 object-contain" />
+      </div>
       <button 
         onClick={onOpenConfig}
-        className="p-2 hover:bg-[#3E2723] rounded-full transition-all duration-200 hover:scale-110 cursor-pointer"
+        className="p-3 bg-[#ECE9D9] rounded-xl shadow-lg hover:bg-[#E7E4D8] transition-all duration-200 hover:scale-105 cursor-pointer group border border-[#99815D]/20"
       >
-        <Settings size={22} />
+        <Settings size={24} className="text-[#8C7654] group-hover:rotate-90 transition-transform duration-500"/>
       </button>
     </header>
   );

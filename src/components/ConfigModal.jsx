@@ -9,12 +9,12 @@ const ConfigModal = ({ config, setConfig, onApply, onClose }) => {
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md rounded-2xl shadow-2xl overflow-hidden"
           style={{
-            background: 'linear-gradient(145deg, #FFFDE7, #F5F5DC)',
+            background: 'linear-gradient(145deg, #99815D, #7D664A)',
             border: '2px solid #8D6E63'
           }}>
         <div className="px-5 py-4 flex justify-between items-center text-white"
-            style={{ background: 'linear-gradient(135deg, #5D4037, #3E2723)' }}>
-          <h2 className="font-bold text-base md:text-lg flex items-center gap-2">
+            style={{ background: 'linear-gradient(135deg, #ECE9D9, #E3DFD8)' }}>
+          <h2 className="font-bold text-base md:text-lg flex items-center gap-2 text-[#5D4037]">
             <Settings size={18}/> Pengaturan Stok
           </h2>
           <button 
@@ -26,7 +26,7 @@ const ConfigModal = ({ config, setConfig, onApply, onClose }) => {
         </div>
         
         <div className="p-4 md:p-5 space-y-3 max-h-[55vh] overflow-y-auto">
-          <div className="flex justify-between text-xs md:text-sm font-semibold text-[#5D4037] mb-3 px-1">
+          <div className="flex justify-between text-xs md:text-sm font-semibold text-[#ECE9D9] mb-3 px-1">
             <span>Tipe Barang</span>
             <span>Jumlah (Total: {totalItems}/{MAX_ITEMS})</span>
           </div>
@@ -35,7 +35,7 @@ const ConfigModal = ({ config, setConfig, onApply, onClose }) => {
             <div key={type} 
               className="flex items-center justify-between p-3 rounded-xl transition-all hover:scale-[1.01]"
               style={{
-              background: 'white',
+              background: '#ECE9D9',
               boxShadow: '0 2px 8px rgba(62,39,35,0.1)'
               }}>
               <div className="flex items-center gap-3">
@@ -55,7 +55,7 @@ const ConfigModal = ({ config, setConfig, onApply, onClose }) => {
                <div className="flex items-center gap-2">
                   <button 
                     className="w-7 h-7 rounded-full flex items-center justify-center transition-all hover:scale-110 cursor-pointer"
-                    style={{ background: 'linear-gradient(145deg, #E0E0E0, #BDBDBD)' }}
+                    style={{ background: 'linear-gradient(145deg, #DBD6C4, #BEB49F)' }}
                     onClick={() => setConfig(prev => ({ ...prev, [type]: Math.max(0, prev[type] - 1) }))}
                   >
                     <Minus size={12} color="#5D4037"/>
@@ -78,12 +78,12 @@ const ConfigModal = ({ config, setConfig, onApply, onClose }) => {
           ))}
         </div>
 
-        <div className="p-4 flex gap-3" style={{ background: 'rgba(215, 204, 200, 0.3)' }}>
+        <div className="p-4 flex gap-3" style={{ background: 'linear-gradient(145deg, #ECE9D9, #E3DFD8)' }}>
            <button 
             onClick={onApply}
             className="flex-1 text-white py-3 rounded-xl font-bold transition-all hover:scale-[1.02] cursor-pointer"
             style={{
-              background: 'linear-gradient(135deg, #5D4037, #3E2723)',
+              background: 'linear-gradient(135deg, #606652, #484D3E)',
               boxShadow: '0 4px 15px rgba(62, 39, 35, 0.3)'
             }}
            >
