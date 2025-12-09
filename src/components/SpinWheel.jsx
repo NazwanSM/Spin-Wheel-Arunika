@@ -3,7 +3,7 @@ import WheelSlice from './WheelSlice';
 
 const SpinWheel = ({ items, rotation }) => {
   return (
-    <div className="relative w-full max-w-[350px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] aspect-square flex items-center justify-center">
+    <div className="relative w-full max-w-[320px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[550px] aspect-square flex items-center justify-center">
       {/* Pointer/Jarum - di atas mengarah ke bawah */}
       <div className="absolute top-[-20px] md:top-[-25px] left-1/2 -translate-x-1/2 z-20">
          <svg 

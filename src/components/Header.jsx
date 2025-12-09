@@ -4,9 +4,9 @@ import loocoLogo from '/ARUNIKA_LOGO.png';
 
 const Header = ({ onOpenConfig }) => {
   return (
-    <header className="px-6 md:px-8 py-4 flex justify-between items-center z-10 backdrop-blur-sm bg-white/5 border-b border-white/10">
+    <header className="px-6 md:px-8 py-2 flex justify-between items-center z-10 backdrop-blur-sm bg-[#ECE9D9]/95 border-b border-white/10">
       <div className=" p-2 rounded-xl">
-        <img src={loocoLogo} alt="LooCo Logo" className="h-12 md:h-16 object-contain" />
+        <img src={loocoLogo} alt="LooCo Logo" className="h-14 md:h-18 object-contain" />
       </div>
       <button 
         onClick={onOpenConfig}

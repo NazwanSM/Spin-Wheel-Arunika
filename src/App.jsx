@@ -206,7 +206,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen font-sans text-[#3E2723] overflow-x-hidden flex flex-col relative"
+    <div className="min-h-screen font-sans text-[#3E2723] overflow-hidden flex flex-col"
          style={{ background: 'linear-gradient(180deg, #99815D 0%, #8C7654 50%, #7D664A 100%)' }}>
       
       {/* Background Pattern Overlay */}
@@ -222,14 +222,14 @@ export default function App() {
         <Header onOpenConfig={() => setShowConfig(true)} />
       </div>
 
-      <main className="flex-1 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center px-4 py-6 md:py-12 gap-8 md:gap-16 relative z-10">
+      <main className="flex-1 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center px-20 py-6 md:py-12 gap-8 md:gap-16 relative z-10">
         
         {/* --- Area Roda (Kiri/Tengah) --- */}
         <div className="relative flex-1 flex justify-center items-center w-full max-w-[700px] lg:max-w-none">
             {/* Glow Effect behind wheel */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#ECE9D9]/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#ECE9D9]/10 rounded-full blur-3xl pointer-events-none"></div>
             
-            <div className="transform transition-transform duration-500 hover:scale-[1.02] relative z-10 w-full flex justify-center">
+            <div className="transform transition-transform duration-500 relative z-10 w-full flex justify-center">
                 <SpinWheel items={items} rotation={rotation} />
             </div>
         </div>

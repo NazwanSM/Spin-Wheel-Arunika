@@ -2,12 +2,13 @@ import React from 'react';
 import { AlertCircle } from 'lucide-react';
 import { ITEM_TYPES } from '../constants/itemTypes';
 
-const ControlPanel = ({ itemsCount, isSpinning, onSpin, config }) => {
+
+const ControlPanel = ({itemsCount, isSpinning, onSpin, config }) => {
   return (
     <div className="flex flex-col items-center w-full">
       
       {/* Main Card Container */}
-      <div className="w-full bg-[#ECE9D9]/95 backdrop-blur-xl rounded-3xl p-5 md:p-6 shadow-2xl border border-white/40"
+      <div className="w-full bg-[#ECE9D9]/95 backdrop-blur-xl rounded-3xl p-6 md:p-7 shadow-2xl border border-white/40"
            style={{
              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
            }}>
