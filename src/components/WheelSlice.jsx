@@ -11,7 +11,8 @@ const getCoordinatesForPercent = (percent) => {
 const TYPE_EMOJI = {
   A: '🎁',      // Candy untuk Freebies
   B: '💵',      // Money untuk Cashback 2k
-  C: '💰',      // Money bag untuk Cashback 5k
+  C: '💰',
+  D: '🍫',      // Money bag untuk Cashback 5k
   ZONK: '💣',   // Bomb untuk ZONK
 };
 
